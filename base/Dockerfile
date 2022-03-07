@@ -1,10 +1,4 @@
-FROM fedora:33
-
-# Adapted from https://github.com/bbrowning/github-runner/blob/master/Dockerfile
-RUN dnf -y upgrade --security && \
-    dnf -y --setopt=skip_missing_names_on_install=False install \
-    curl git jq hostname procps findutils which openssl && \
-    dnf clean all
+FROM myoung34/github-runner-base:latest
 
 # The UID env var should be used in child Containerfile.
 ENV UID=1000
@@ -48,8 +42,9 @@ RUN chown -R ${USERNAME}:0 /home/${USERNAME}/ && \
 
 COPY --chown=${USERNAME}:0 entrypoint.sh uid.sh register.sh get_github_app_token.sh ./
 
+RUN usermod -aG docker $USERNAME
+RUN echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
 USER $UID
 
 ENTRYPOINT ./entrypoint.sh
-
-# Test comment

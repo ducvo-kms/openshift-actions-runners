@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Ensure that dynamically-assigned uid has an entry in /etc/passwd on container startup.
 

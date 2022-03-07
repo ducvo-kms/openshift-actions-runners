@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Based on https://github.com/bbrowning/github-runner/blob/master/entrypoint.sh
 
 ./uid.sh > /tmp/uid.sh.log

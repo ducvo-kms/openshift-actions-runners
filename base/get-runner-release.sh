@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Use the GitHub API to find the latest release of the GitHub Action runner,
 # then download and extract the tarball for that release.
